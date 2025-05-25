@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import logo from '../assets/Cens454.jpeg';
+// Importamos la imagen de forma absoluta desde public
+// import logo from '../assets/Cens454.jpeg';
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -45,7 +46,7 @@ const Navbar = () => {
         >
           <div className="h-12 w-12 sm:h-16 sm:w-16 overflow-hidden rounded-md border-2 border-[#D4AF37]/30 shadow-lg">
             <img 
-              src={logo} 
+              src={process.env.PUBLIC_URL + '/logo.png'} 
               alt="CENS 454 Logo" 
               className="w-full h-full object-contain bg-black"
             />
