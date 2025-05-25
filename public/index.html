@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <link rel="icon" href="%PUBLIC_URL%/img/favicon.svg" type="image/svg+xml" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#000000" />
     <meta
       name="description"
@@ -40,9 +40,111 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
     <title>CENS 454 | Quequén</title>
+    
+    <!-- Estilos para el botón superpuesto -->
+    <style>
+      #mega-hamburger {
+        position: fixed !important;
+        top: 10px !important;
+        right: 15px !important;
+        width: 50px !important;
+        height: 50px !important;
+        background-color: #1A1A1A !important;
+        border: 2px solid #D6A520 !important;
+        border-radius: 6px !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+        align-items: center !important;
+        gap: 7px !important;
+        padding: 0 !important;
+        cursor: pointer !important;
+        box-shadow: 0 4px 15px rgba(184, 134, 11, 0.5) !important;
+        z-index: 9999999 !important; /* Valor máximo posible */
+        transform: none !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        pointer-events: auto !important;
+        transition: none !important;
+        max-height: none !important;
+        max-width: none !important;
+        min-height: 50px !important;
+        min-width: 50px !important;
+        margin: 0 !important;
+        left: auto !important;
+        bottom: auto !important;
+        outline: none !important;
+        overflow: visible !important;
+      }
+      
+      .mega-hamburger-line {
+        width: 60% !important;
+        height: 3px !important;
+        background: linear-gradient(to right, #B8860B, #FFD700, #B8860B) !important;
+        border-radius: 3px !important;
+        transition: all 0.3s ease !important;
+        display: block !important;
+        margin: 0 !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        position: relative !important;
+      }
+      
+      #mega-hamburger.is-open .mega-hamburger-line:nth-child(1) {
+        transform: translateY(10px) rotate(45deg) !important;
+      }
+      
+      #mega-hamburger.is-open .mega-hamburger-line:nth-child(2) {
+        opacity: 0 !important;
+      }
+      
+      #mega-hamburger.is-open .mega-hamburger-line:nth-child(3) {
+        transform: translateY(-10px) rotate(-45deg) !important;
+      }
+      
+      @media (min-width: 768px) {
+        #mega-hamburger {
+          display: none !important;
+        }
+      }
+      
+      /* Para evitar conflictos con otros elementos */
+      #hamburger-iframe, .iframe-container, #fallback-hamburger, #fixed-mobile-menu-btn {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+      }
+      
+      /* Evitar scroll cuando el menú está abierto */
+      body.menu-is-open {
+        overflow: hidden !important;
+        position: fixed !important;
+        width: 100% !important;
+        height: 100% !important;
+      }
+      
+      /* Estilo de pulsación para el botón */
+      @keyframes mega-pulse {
+        0% { transform: scale(1); box-shadow: 0 4px 20px rgba(184, 134, 11, 0.5); }
+        50% { transform: scale(1.05); box-shadow: 0 4px 25px rgba(214, 165, 32, 0.6); }
+        100% { transform: scale(1); box-shadow: 0 4px 20px rgba(184, 134, 11, 0.5); }
+      }
+      
+      #mega-hamburger {
+        animation: mega-pulse 2s infinite;
+      }
+    </style>
   </head>
   <body>
     <noscript>Necesitas habilitar JavaScript para ejecutar esta aplicación.</noscript>
+    
+    <!-- Botón de hamburguesa supremo -->
+    <button id="mega-hamburger" aria-label="Menú principal">
+      <span class="mega-hamburger-line"></span>
+      <span class="mega-hamburger-line"></span>
+      <span class="mega-hamburger-line"></span>
+    </button>
+    
     <div id="root"></div>
     <!--
       This HTML file is a template.
@@ -63,6 +165,105 @@
     <script>
       document.addEventListener('DOMContentLoaded', function() {
         AOS.init();
+        
+        // Gestión del botón de hamburguesa supremo
+        const megaHamburger = document.getElementById('mega-hamburger');
+        const body = document.body;
+        let isMenuOpen = false;
+        
+        if (megaHamburger) {
+          // Asegurar visibilidad desde el inicio
+          megaHamburger.style.display = 'flex';
+          megaHamburger.style.visibility = 'visible';
+          megaHamburger.style.opacity = '1';
+          
+          // Gestionar clic en el botón
+          megaHamburger.addEventListener('click', function() {
+            isMenuOpen = !isMenuOpen;
+            
+            if (isMenuOpen) {
+              megaHamburger.classList.add('is-open');
+              body.classList.add('menu-is-open');
+            } else {
+              megaHamburger.classList.remove('is-open');
+              body.classList.remove('menu-is-open');
+            }
+            
+            // Comunicar con React
+            const event = new CustomEvent('toggleMobileMenu', { 
+              detail: { isOpen: isMenuOpen } 
+            });
+            window.dispatchEvent(event);
+          });
+          
+          // Verificar visibilidad periódicamente
+          setInterval(function() {
+            if (window.innerWidth < 768) {
+              megaHamburger.style.display = 'flex';
+              megaHamburger.style.visibility = 'visible';
+              megaHamburger.style.opacity = '1';
+              
+              // Forzar que esté en el frente
+              megaHamburger.style.zIndex = '9999999';
+              
+              // Asegurarse que no hay transformaciones que lo oculten
+              megaHamburger.style.transform = 'none';
+              
+              // Forzar posición correcta
+              megaHamburger.style.position = 'fixed';
+              megaHamburger.style.top = '10px';
+              megaHamburger.style.right = '15px';
+              
+              // Asegurar que recibe eventos
+              megaHamburger.style.pointerEvents = 'auto';
+            }
+          }, 100); // Verificar más frecuentemente
+        }
+        
+        // Detectar cambios de hash para cerrar el menú
+        window.addEventListener('hashchange', function() {
+          if (megaHamburger && isMenuOpen) {
+            isMenuOpen = false;
+            megaHamburger.classList.remove('is-open');
+            body.classList.remove('menu-is-open');
+            
+            // Comunicar con React
+            const event = new CustomEvent('toggleMobileMenu', { 
+              detail: { isOpen: false } 
+            });
+            window.dispatchEvent(event);
+          }
+        });
+        
+        // Verificar después de que todas las imágenes y recursos se hayan cargado
+        window.addEventListener('load', function() {
+          if (megaHamburger && window.innerWidth < 768) {
+            megaHamburger.style.display = 'flex';
+            megaHamburger.style.visibility = 'visible';
+            megaHamburger.style.opacity = '1';
+            megaHamburger.style.zIndex = '9999999';
+            megaHamburger.style.transform = 'none';
+            megaHamburger.style.width = '50px';
+            megaHamburger.style.height = '50px';
+            megaHamburger.style.top = '10px';
+            megaHamburger.style.right = '15px';
+          }
+        });
+        
+        // Verificar después de 1 segundo, por si acaso
+        setTimeout(function() {
+          if (megaHamburger && window.innerWidth < 768) {
+            megaHamburger.style.display = 'flex';
+            megaHamburger.style.visibility = 'visible';
+            megaHamburger.style.opacity = '1';
+            megaHamburger.style.zIndex = '9999999';
+            megaHamburger.style.transform = 'none';
+            megaHamburger.style.width = '50px';
+            megaHamburger.style.height = '50px';
+            megaHamburger.style.top = '10px';
+            megaHamburger.style.right = '15px';
+          }
+        }, 1000);
       });
     </script>
   </body>

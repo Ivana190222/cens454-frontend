@@ -6,6 +6,7 @@ body {
   color: #F8F7F1; /* Light */
   transition: background-color 0.3s ease, color 0.3s ease;
   position: relative;
+  padding-top: 72px !important;
 }
 
 body::before {
@@ -29,7 +30,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 span, h2 span, h3 span {
-  color: #D4AF37; /* Dorado real */
+  color: #D6A520; /* Dorado metálico brillante */
 }
 
 p {
@@ -38,14 +39,14 @@ p {
 }
 
 a {
-  color: #D4AF37; /* Dorado real */
+  color: #D6A520; /* Dorado metálico brillante */
   text-decoration: none;
   transition: all 0.3s ease;
   position: relative;
 }
 
 a:hover {
-  color: #FFD700; /* Gold - Dorado puro */
+  color: #FFD700; /* Dorado brillante */
 }
 
 a.underline-hover::after {
@@ -55,7 +56,7 @@ a.underline-hover::after {
   height: 2px;
   bottom: -4px;
   left: 0;
-  background-color: #D4AF37; /* Dorado real */
+  background: linear-gradient(to right, #B8860B, #FFD700, #B8860B); /* Gradiente dorado metálico */
   transition: width 0.3s ease;
 }
 
@@ -76,7 +77,8 @@ section {
 
 /* Ajuste para la navegación fija */
 section:first-of-type {
-  margin-top: 60px;
+  margin-top: 70px !important;
+  padding-top: 2rem !important;
 }
 
 /* Decoración de secciones */
@@ -122,28 +124,28 @@ section::before {
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, #996515, #FFD700); /* Degradado dorado metálico */
+  background: linear-gradient(135deg, #B8860B, #FFD700); /* Degradado dorado metálico */
   color: #121212; /* Dark */
   border: none;
 }
 
 .btn-primary:hover {
-  background: linear-gradient(135deg, #FFD700, #996515); /* Degradado invertido */
+  background: linear-gradient(135deg, #FFD700, #B8860B); /* Degradado invertido */
   color: #121212; /* Dark */
   transform: translateY(-3px);
-  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+  box-shadow: 0 4px 15px rgba(214, 165, 32, 0.4);
 }
 
 .btn-secondary {
   background-color: transparent;
-  color: #D4AF37; /* Dorado real */
-  border: 2px solid #D4AF37; /* Dorado real */
+  color: #D6A520; /* Dorado metálico brillante */
+  border: 2px solid #D6A520; /* Dorado metálico brillante */
 }
 
 .btn-secondary:hover {
-  background-color: rgba(212, 175, 55, 0.1);
-  border-color: #FFD700; /* Gold - Dorado puro */
-  color: #FFD700; /* Gold - Dorado puro */
+  background-color: rgba(214, 165, 32, 0.1);
+  border-color: #FFD700; /* Dorado brillante */
+  color: #FFD700; /* Dorado brillante */
 }
 
 /* Clases de utilidad */
@@ -152,7 +154,7 @@ section::before {
 }
 
 .text-gold {
-  color: #D4AF37 !important; /* Dorado real */
+  color: #D6A520 !important; /* Dorado metálico brillante */
 }
 
 .bg-dark {
@@ -166,11 +168,11 @@ section::before {
 }
 
 .gold-border {
-  border: 1px solid rgba(212, 175, 55, 0.3);
+  border: 1px solid rgba(214, 165, 32, 0.3);
 }
 
 .gold-glow {
-  box-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
+  box-shadow: 0 0 15px rgba(214, 165, 32, 0.3);
 }
 
 /* Animaciones */
@@ -188,7 +190,7 @@ section::before {
 }
 
 @keyframes goldPulse {
-  0%, 100% { box-shadow: 0 0 0 rgba(212, 175, 55, 0); }
+  0%, 100% { box-shadow: 0 0 0 rgba(214, 165, 32, 0); }
   50% { box-shadow: 0 0 20px rgba(255, 215, 0, 0.5); }
 }
 
@@ -204,8 +206,8 @@ input, textarea, select {
 
 input:focus, textarea:focus, select:focus {
   outline: none;
-  border-color: #D4AF37; /* Dorado real */
-  box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.2);
+  border-color: #D6A520; /* Dorado metálico brillante */
+  box-shadow: 0 0 0 2px rgba(214, 165, 32, 0.2);
 }
 
 /* Estilos para Footer */
@@ -227,19 +229,20 @@ footer::before {
   left: 0;
   width: 100%;
   height: 100%;
+  background-image: none; /* Eliminamos los círculos de fondo */
   background-color: #0A0A0A;
   pointer-events: none;
   z-index: -1;
 }
 
 footer a {
-  color: #D4AF37; /* Dorado real */
+  color: #D6A520; /* Dorado metálico brillante */
   position: relative;
   z-index: 1;
 }
 
 footer a:hover {
-  color: #FFD700; /* Gold - Dorado puro */
+  color: #FFD700; /* Dorado brillante */
 }
 
 footer .container {
@@ -254,12 +257,12 @@ footer .container {
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #D4AF37; /* Dorado real */
+  background: linear-gradient(to right, #B8860B, #FFD700, #B8860B); /* Gradiente dorado metálico */
   border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background-color: #FFD700; /* Gold - Dorado puro */
+  background: linear-gradient(to right, #FFD700, #B8860B, #FFD700); /* Gradiente dorado invertido */
 }
 
 /* Decoraciones doradas adicionales */
@@ -279,7 +282,7 @@ footer .container {
   height: 3px;
   bottom: -10px;
   left: 0;
-  background: linear-gradient(to right, rgba(212, 175, 55, 0), rgba(255, 215, 0, 0.8), rgba(212, 175, 55, 0));
+  background: linear-gradient(to right, rgba(184, 134, 11, 0), rgba(255, 215, 0, 0.8), rgba(184, 134, 11, 0));
 }
 
 /* Media queries */
@@ -295,50 +298,120 @@ footer .container {
   h2 {
     font-size: 1.8rem;
   }
+
+  body {
+    padding-top: 72px !important;
+  }
 }
 
 /* Estilos para navegación fija en dispositivos móviles */
 nav.fixed {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 1000;
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  z-index: 1000 !important;
   -webkit-transform: translateZ(0);
   transform: translateZ(0);
   will-change: transform;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
+  background-color: #0A0A0A !important;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5) !important;
 }
 
 @media (max-width: 768px) {
-  nav.fixed {
+  nav {
     background-color: #0A0A0A !important;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5) !important;
   }
   
   .btn-hamburger {
-    width: 48px;
-    height: 48px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    width: 48px !important;
+    height: 48px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background-color: #1A1A1A !important;
+    border: 2px solid rgba(212, 175, 55, 0.3) !important;
+    border-radius: 6px !important;
   }
   
   .hamburger-line {
-    width: 24px;
-    height: 2px;
-    background-color: #FFD700;
+    width: 24px !important;
+    height: 3px !important;
+    background-color: #FFD700 !important;
+    display: block !important;
+    position: absolute !important;
+  }
+}
+
+/* Aumentar el tamaño del botón hamburguesa en pantallas muy pequeñas */
+@media (max-width: 480px) {
+  .btn-hamburger {
+    width: 52px !important;
+    height: 52px !important;
+  }
+  
+  .hamburger-line {
+    width: 30px !important;
+    height: 3px !important;
   }
 }
 
 /* Ajuste para la navegación fija */
 section:first-of-type {
-  margin-top: 60px;
+  margin-top: 70px !important;
+  padding-top: 2rem !important;
 }
 
 @media (max-width: 640px) {
   section:first-of-type {
-    margin-top: 56px;
+    margin-top: 70px !important;
+    padding-top: 2rem !important;
   }
+}
+
+/* Estilos globales para la navegación */
+nav {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  z-index: 1000 !important;
+  background-color: #0A0A0A !important;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.8) !important;
+}
+
+/* Estilos específicos para el botón de hamburguesa en línea */
+.hamburger-button-inline {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+}
+
+@media (min-width: 768px) {
+  .hamburger-button-inline {
+    display: none !important;
+  }
+}
+
+/* Asegurarnos que el botón de hamburguesa siempre sea visible en móviles */
+#fixed-mobile-menu-btn {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+}
+
+@media (min-width: 768px) {
+  #fixed-mobile-menu-btn {
+    display: none !important;
+  }
+}
+
+/* Evitar conflictos con otros elementos */
+#hamburger-iframe, .iframe-container, #fallback-hamburger, #fixed-mobile-menu-btn {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
 }

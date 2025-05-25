@@ -42,7 +42,7 @@
 
 .footer-section h3 {
   font-size: 1.2rem;
-  color: #D4AF37; /* Dorado real */
+  color: #D6A520; /* Dorado metálico brillante */
   margin-bottom: 1.2rem;
   font-weight: 600;
   position: relative;
@@ -54,7 +54,7 @@
   position: absolute;
   width: 40px;
   height: 2px;
-  background-color: #996515; /* Dorado oscuro */
+  background-color: #FFD700; /* Dorado brillante */
   bottom: 0;
   left: 0;
 }
@@ -79,12 +79,12 @@
 }
 
 .footer-links a:hover {
-  color: #FFD700; /* Gold - Dorado puro */
+  color: #FFD700; /* Dorado brillante */
   text-decoration: none;
 }
 
 .footer-bottom {
-  border-top: 1px solid rgba(212, 175, 55, 0.1);
+  border-top: 1px solid rgba(214, 165, 32, 0.1);
   padding-top: 1.5rem;
   text-align: center;
 }

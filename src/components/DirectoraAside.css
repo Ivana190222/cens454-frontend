@@ -47,7 +47,7 @@
   position: absolute;
   width: 80px;
   height: 3px;
-  background: linear-gradient(to right, rgba(184, 134, 11, 0), rgba(255, 198, 64, 0.9), rgba(184, 134, 11, 0));
+  background: linear-gradient(to right, rgba(184, 134, 11, 0), rgba(255, 215, 0, 0.9), rgba(184, 134, 11, 0));
   bottom: -10px;
   left: 50%;
   transform: translateX(-50%);
@@ -60,7 +60,7 @@
   border-radius: 12px;
   padding: 2rem;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-  border: 1px solid rgba(184, 134, 11, 0.1);
+  border: 1px solid rgba(214, 165, 32, 0.1);
 }
 
 .directora-img {
@@ -72,7 +72,7 @@
   width: 100%;
   border-radius: 8px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-  border: 1px solid rgba(184, 134, 11, 0.1);
+  border: 1px solid rgba(214, 165, 32, 0.1);
 }
 
 .directora-text {
@@ -81,7 +81,7 @@
 
 .directora-text h4 {
   font-size: 1.5rem;
-  color: #B8860B;
+  color: #D6A520;
   margin-bottom: 1rem;
   font-weight: 600;
 }
@@ -97,7 +97,7 @@
 .btn-contacto {
   display: inline-block;
   padding: 0.8rem 2rem;
-  background: linear-gradient(135deg, #B8860B, #FFC640);
+  background: linear-gradient(135deg, #B8860B, #FFD700);
   color: #121212;
   font-weight: 600;
   border-radius: 30px;
@@ -111,9 +111,9 @@
 }
 
 .btn-contacto:hover {
-  background: linear-gradient(135deg, #FFC640, #B8860B);
+  background: linear-gradient(135deg, #FFD700, #B8860B);
   transform: translateY(-3px);
-  box-shadow: 0 4px 12px rgba(184, 134, 11, 0.3);
+  box-shadow: 0 4px 12px rgba(214, 165, 32, 0.3);
 }
 
 /* Anuncios */
@@ -129,19 +129,19 @@
   border-radius: 10px;
   padding: 1.5rem;
   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
-  border-left: 4px solid #B8860B;
+  border-left: 4px solid #D6A520;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  border: 1px solid rgba(184, 134, 11, 0.1);
+  border: 1px solid rgba(214, 165, 32, 0.1);
 }
 
 .anuncio-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 10px 25px rgba(184, 134, 11, 0.15);
-  border-color: rgba(184, 134, 11, 0.3);
+  box-shadow: 0 10px 25px rgba(214, 165, 32, 0.15);
+  border-color: rgba(214, 165, 32, 0.3);
 }
 
 .anuncio-card h4 {
-  color: #FFC640;
+  color: #FFD700;
   font-size: 1.2rem;
   margin-bottom: 0.8rem;
   font-weight: 600;
@@ -158,8 +158,8 @@
   display: inline-block;
   padding: 0.5rem 1.2rem;
   background-color: transparent;
-  color: #B8860B;
-  border: 1px solid #B8860B;
+  color: #D6A520;
+  border: 1px solid #D6A520;
   border-radius: 20px;
   text-decoration: none;
   font-size: 0.9rem;
@@ -168,7 +168,7 @@
 }
 
 .btn-anuncio:hover {
-  background-color: #B8860B;
+  background-color: #D6A520;
   color: #121212;
 }
 
