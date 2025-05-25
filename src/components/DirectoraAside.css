@@ -1,0 +1,175 @@
+.directora-aside {
+  padding: 5rem 1rem;
+  background-color: #1E293B;
+  font-family: 'Poppins', sans-serif;
+  color: #F8FAFC;
+}
+
+.directora-aside .container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.directora-section {
+  margin-bottom: 4rem;
+}
+
+.directora-aside h3 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #F8FAFC;
+  margin-bottom: 2rem;
+  text-align: center;
+  position: relative;
+  display: inline-block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.directora-aside h3::after {
+  content: '';
+  position: absolute;
+  width: 60px;
+  height: 3px;
+  background-color: #06B6D4;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.directora-content {
+  display: flex;
+  gap: 2rem;
+  background-color: #334155;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.directora-img {
+  flex: 1;
+  max-width: 300px;
+}
+
+.directora-img img {
+  width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.directora-text {
+  flex: 2;
+}
+
+.directora-text h4 {
+  font-size: 1.5rem;
+  color: #F8FAFC;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.directora-text p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #CBD5E1;
+  margin-bottom: 1.2rem;
+  font-style: italic;
+}
+
+.btn-contacto {
+  display: inline-block;
+  padding: 0.8rem 2rem;
+  background-color: #06B6D4;
+  color: #F8FAFC;
+  font-weight: 600;
+  border-radius: 30px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-top: 0.5rem;
+  font-size: 1rem;
+}
+
+.btn-contacto:hover {
+  background-color: #0E7490;
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(6, 182, 212, 0.3);
+}
+
+/* Anuncios */
+.anuncios-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.anuncio-card {
+  background: linear-gradient(135deg, #334155, #1E293B);
+  border-radius: 10px;
+  padding: 1.5rem;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+  border-left: 4px solid #4F46E5;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.anuncio-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+.anuncio-card h4 {
+  color: #F8FAFC;
+  font-size: 1.2rem;
+  margin-bottom: 0.8rem;
+  font-weight: 600;
+}
+
+.anuncio-card p {
+  color: #CBD5E1;
+  font-size: 1rem;
+  line-height: 1.5;
+  margin-bottom: 1.2rem;
+}
+
+.btn-anuncio {
+  display: inline-block;
+  padding: 0.5rem 1.2rem;
+  background-color: transparent;
+  color: #EC4899;
+  border: 1px solid #EC4899;
+  border-radius: 20px;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.btn-anuncio:hover {
+  background-color: #EC4899;
+  color: white;
+}
+
+@media (max-width: 768px) {
+  .directora-content {
+    flex-direction: column;
+    align-items: center;
+    padding: 1.5rem;
+  }
+  
+  .directora-img {
+    max-width: 250px;
+    margin-bottom: 1.5rem;
+  }
+  
+  .directora-text {
+    text-align: center;
+  }
+  
+  .directora-aside h3 {
+    font-size: 1.8rem;
+    text-align: center;
+    width: 100%;
+  }
+} 

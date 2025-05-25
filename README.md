@@ -1,70 +1,42 @@
-# Getting Started with Create React App
+# CENS 454 - Sitio Web Oficial
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Este es el repositorio oficial del sitio web del Centro Educativo de Nivel Secundario 454 de Quequén, Necochea, Provincia de Buenos Aires.
 
-## Available Scripts
+## Descripción
 
-In the project directory, you can run:
+El sitio web del CENS 454 fue desarrollado para proporcionar información relevante sobre nuestra institución educativa, incluyendo:
 
-### `npm start`
+- Información general sobre el CENS 454
+- Nuestra misión, visión y valores
+- Galería de imágenes
+- Palabras de la Directora
+- Información de contacto y formulario para consultas
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Tecnologías Utilizadas
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+El sitio web está construido utilizando:
 
-### `npm test`
+- **React.js**: Framework de JavaScript para el desarrollo del frontend
+- **Tailwind CSS**: Framework de CSS para el diseño y estilizado
+- **Responsive Design**: Diseño adaptable a todos los dispositivos
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Requisitos
 
-### `npm run build`
+- Node.js 14.0.0 o superior
+- npm 6.14.0 o superior
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Estructura del Proyecto
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```
+cens454-frontend/
+├── public/              # Archivos estáticos
+├── src/                 # Código fuente
+│   ├── assets/          # Imágenes y recursos
+│   ├── components/      # Componentes React
+│   ├── App.js           # Componente principal
+│   └── index.js         # Punto de entrada
+├── package.json         # Dependencias y scripts
+└── README.md            # Este archivo
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
