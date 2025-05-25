@@ -7,6 +7,8 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
   position: relative;
   padding-top: 72px !important;
+  max-width: 100%;
+  overflow-x: hidden; /* Prevenir scroll horizontal en toda la página */
 }
 
 body::before {
@@ -414,4 +416,40 @@ nav {
   display: none !important;
   visibility: hidden !important;
   opacity: 0 !important;
+}
+
+/* Asegurar que los elementos no se desborden fuera de sus contenedores */
+* {
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
+
+/* Resetear márgenes y paddings que podrían causar overflow */
+body, #root, .app {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  position: relative;
+}
+
+/* Forzar eliminación de scroll horizontal */
+html, body {
+  max-width: 100vw !important;
+  width: 100% !important;
+  overflow-x: hidden !important;
+  position: relative !important;
+}
+
+#root, .app {
+  width: 100% !important;
+  max-width: 100vw !important;
+  overflow-x: hidden !important;
+  position: relative !important;
+}
+
+/* Regla para todos los elementos */
+* {
+  max-width: 100vw;
+  box-sizing: border-box !important;
 }

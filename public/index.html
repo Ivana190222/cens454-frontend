@@ -44,45 +44,69 @@
     <!-- Estilos para el botón superpuesto -->
     <style>
       #mega-hamburger {
+        /* Posición absolutamente fija en la esquina superior derecha */
         position: fixed !important;
         top: 10px !important;
-        right: 15px !important;
-        width: 50px !important;
-        height: 50px !important;
+        right: 5px !important; /* Muy pegado al borde derecho */
+        left: auto !important;
+        
+        /* Tamaño más pequeño */
+        width: 40px !important;
+        height: 40px !important;
+        min-width: 40px !important;
+        min-height: 40px !important;
+        max-width: 40px !important;
+        max-height: 40px !important;
+        
+        /* Estilos visuales */
         background-color: #1A1A1A !important;
         border: 2px solid #D6A520 !important;
         border-radius: 6px !important;
+        
+        /* Flex para centrar líneas */
         display: flex !important;
         flex-direction: column !important;
         justify-content: center !important;
         align-items: center !important;
-        gap: 7px !important;
+        gap: 5px !important;
+        
+        /* Reset de estilos que podrían interferir */
         padding: 0 !important;
-        cursor: pointer !important;
-        box-shadow: 0 4px 15px rgba(184, 134, 11, 0.5) !important;
-        z-index: 9999999 !important; /* Valor máximo posible */
+        margin: 0 !important;
         transform: none !important;
+        
+        /* Máxima visibilidad */
+        z-index: 2147483647 !important; /* Máximo valor posible */
         visibility: visible !important;
         opacity: 1 !important;
+        
+        /* Comportamiento táctil */
+        cursor: pointer !important;
         pointer-events: auto !important;
+        -webkit-tap-highlight-color: transparent !important;
+        touch-action: manipulation !important;
+        
+        /* Evitar cambios de animación no deseados */
         transition: none !important;
-        max-height: none !important;
-        max-width: none !important;
-        min-height: 50px !important;
-        min-width: 50px !important;
-        margin: 0 !important;
-        left: auto !important;
-        bottom: auto !important;
-        outline: none !important;
-        overflow: visible !important;
+        -webkit-transition: none !important;
+        -moz-transition: none !important;
+        -o-transition: none !important;
+        
+        /* Optimizaciones de rendimiento */
+        will-change: transform, opacity !important;
+        backface-visibility: visible !important;
+        -webkit-backface-visibility: visible !important;
+        
+        /* Forzar visibilidad con sombra */
+        box-shadow: 0 0 10px 2px rgba(214, 165, 32, 0.8) !important;
       }
       
       .mega-hamburger-line {
         width: 60% !important;
-        height: 3px !important;
+        height: 2px !important;
         background: linear-gradient(to right, #B8860B, #FFD700, #B8860B) !important;
         border-radius: 3px !important;
-        transition: all 0.3s ease !important;
+        transition: transform 0.3s ease, opacity 0.3s ease !important;
         display: block !important;
         margin: 0 !important;
         opacity: 1 !important;
@@ -91,7 +115,7 @@
       }
       
       #mega-hamburger.is-open .mega-hamburger-line:nth-child(1) {
-        transform: translateY(10px) rotate(45deg) !important;
+        transform: translateY(7px) rotate(45deg) !important;
       }
       
       #mega-hamburger.is-open .mega-hamburger-line:nth-child(2) {
@@ -99,7 +123,7 @@
       }
       
       #mega-hamburger.is-open .mega-hamburger-line:nth-child(3) {
-        transform: translateY(-10px) rotate(-45deg) !important;
+        transform: translateY(-7px) rotate(-45deg) !important;
       }
       
       @media (min-width: 768px) {
@@ -125,9 +149,9 @@
       
       /* Estilo de pulsación para el botón */
       @keyframes mega-pulse {
-        0% { transform: scale(1); box-shadow: 0 4px 20px rgba(184, 134, 11, 0.5); }
-        50% { transform: scale(1.05); box-shadow: 0 4px 25px rgba(214, 165, 32, 0.6); }
-        100% { transform: scale(1); box-shadow: 0 4px 20px rgba(184, 134, 11, 0.5); }
+        0% { transform: scale(1); box-shadow: 0 0 10px 2px rgba(214, 165, 32, 0.8); }
+        50% { transform: scale(1.05); box-shadow: 0 0 15px 3px rgba(255, 215, 0, 0.9); }
+        100% { transform: scale(1); box-shadow: 0 0 10px 2px rgba(214, 165, 32, 0.8); }
       }
       
       #mega-hamburger {
@@ -170,23 +194,74 @@
         const megaHamburger = document.getElementById('mega-hamburger');
         const body = document.body;
         let isMenuOpen = false;
+        let scrollPosition = 0; // Para guardar la posición de scroll
+        
+        // Función para garantizar visibilidad del botón
+        function ensureButtonVisibility() {
+          if (!megaHamburger) return;
+          
+          if (window.innerWidth < 768) {
+            // Forzar visibilidad en móviles
+            megaHamburger.style.display = 'flex';
+            megaHamburger.style.visibility = 'visible';
+            megaHamburger.style.opacity = '1';
+            
+            // Posición absoluta en la esquina superior derecha
+            megaHamburger.style.position = 'fixed';
+            megaHamburger.style.top = '10px';
+            megaHamburger.style.right = '5px';
+            megaHamburger.style.left = 'auto';
+            megaHamburger.style.bottom = 'auto';
+            
+            // Dimensiones fijas
+            megaHamburger.style.width = '40px';
+            megaHamburger.style.height = '40px';
+            megaHamburger.style.minWidth = '40px';
+            megaHamburger.style.minHeight = '40px';
+            megaHamburger.style.maxWidth = '40px';
+            megaHamburger.style.maxHeight = '40px';
+            
+            // Asegurar máxima prioridad en z-index
+            megaHamburger.style.zIndex = '2147483647';
+            
+            // Reset de transformaciones
+            megaHamburger.style.transform = 'none';
+            
+            // Permitir clics
+            megaHamburger.style.pointerEvents = 'auto';
+            
+            // Sombra brillante para destacarlo
+            megaHamburger.style.boxShadow = '0 0 10px 2px rgba(214, 165, 32, 0.8)';
+          } else {
+            // Ocultar en escritorio
+            megaHamburger.style.display = 'none';
+          }
+        }
         
         if (megaHamburger) {
-          // Asegurar visibilidad desde el inicio
-          megaHamburger.style.display = 'flex';
-          megaHamburger.style.visibility = 'visible';
-          megaHamburger.style.opacity = '1';
+          // Aplicar visibilidad inicial
+          ensureButtonVisibility();
           
           // Gestionar clic en el botón
           megaHamburger.addEventListener('click', function() {
             isMenuOpen = !isMenuOpen;
             
             if (isMenuOpen) {
+              // Guardar la posición actual de scroll
+              scrollPosition = window.pageYOffset;
+              
               megaHamburger.classList.add('is-open');
               body.classList.add('menu-is-open');
+              
+              // Fijar el body en la posición actual para evitar el scroll
+              body.style.top = `-${scrollPosition}px`;
             } else {
               megaHamburger.classList.remove('is-open');
               body.classList.remove('menu-is-open');
+              
+              // Restaurar la posición de scroll
+              body.style.top = '';
+              window.scrollTo(0, scrollPosition);
             }
             
             // Comunicar con React
@@ -196,28 +271,17 @@
             window.dispatchEvent(event);
           });
           
-          // Verificar visibilidad periódicamente
-          setInterval(function() {
-            if (window.innerWidth < 768) {
-              megaHamburger.style.display = 'flex';
-              megaHamburger.style.visibility = 'visible';
-              megaHamburger.style.opacity = '1';
-              
-              // Forzar que esté en el frente
-              megaHamburger.style.zIndex = '9999999';
-              
-              // Asegurarse que no hay transformaciones que lo oculten
-              megaHamburger.style.transform = 'none';
-              
-              // Forzar posición correcta
-              megaHamburger.style.position = 'fixed';
-              megaHamburger.style.top = '10px';
-              megaHamburger.style.right = '15px';
-              
-              // Asegurar que recibe eventos
-              megaHamburger.style.pointerEvents = 'auto';
-            }
-          }, 100); // Verificar más frecuentemente
+          // Verificar visibilidad constantemente
+          setInterval(ensureButtonVisibility, 100);
+          
+          // Verificar después de cada cambio de tamaño de ventana
+          window.addEventListener('resize', ensureButtonVisibility);
+          
+          // Verificar después de que la página termine de cargar
+          window.addEventListener('load', ensureButtonVisibility);
+          
+          // Verificar después de cambios de orientación
+          window.addEventListener('orientationchange', ensureButtonVisibility);
         }
         
         // Detectar cambios de hash para cerrar el menú
@@ -227,6 +291,10 @@
             megaHamburger.classList.remove('is-open');
             body.classList.remove('menu-is-open');
             
+            // Restaurar la posición de scroll
+            body.style.top = '';
+            window.scrollTo(0, scrollPosition);
+            
             // Comunicar con React
             const event = new CustomEvent('toggleMobileMenu', { 
               detail: { isOpen: false } 
@@ -235,35 +303,44 @@
           }
         });
         
-        // Verificar después de que todas las imágenes y recursos se hayan cargado
-        window.addEventListener('load', function() {
-          if (megaHamburger && window.innerWidth < 768) {
-            megaHamburger.style.display = 'flex';
-            megaHamburger.style.visibility = 'visible';
-            megaHamburger.style.opacity = '1';
-            megaHamburger.style.zIndex = '9999999';
-            megaHamburger.style.transform = 'none';
-            megaHamburger.style.width = '50px';
-            megaHamburger.style.height = '50px';
-            megaHamburger.style.top = '10px';
-            megaHamburger.style.right = '15px';
+        // Asegurar que los enlaces funcionan correctamente al hacer clic
+        document.addEventListener('click', function(e) {
+          // Comprobar si se hizo clic en un enlace dentro del menú móvil
+          const mobileMenu = document.querySelector('.mobile-menu');
+          if (mobileMenu && mobileMenu.contains(e.target) && e.target.tagName === 'A') {
+            // Asegurar que el menú se cierre
+            isMenuOpen = false;
+            if (megaHamburger) {
+              megaHamburger.classList.remove('is-open');
+            }
+            body.classList.remove('menu-is-open');
+            
+            // Restaurar la posición de scroll
+            body.style.top = '';
+            window.scrollTo(0, scrollPosition);
+            
+            // Comunicar con React
+            const event = new CustomEvent('toggleMobileMenu', { 
+              detail: { isOpen: false } 
+            });
+            window.dispatchEvent(event);
+            
+            // Dar tiempo para que se cierre el menú antes de la navegación
+            setTimeout(function() {
+              // Obtener el ID de destino del href
+              const href = e.target.getAttribute('href');
+              if (href && href.startsWith('#')) {
+                const targetId = href.substring(1);
+                const targetElement = document.getElementById(targetId);
+                
+                if (targetElement) {
+                  // Desplazarse al elemento de destino
+                  targetElement.scrollIntoView({ behavior: 'smooth' });
+                }
+              }
+            }, 100);
           }
         });
-        
-        // Verificar después de 1 segundo, por si acaso
-        setTimeout(function() {
-          if (megaHamburger && window.innerWidth < 768) {
-            megaHamburger.style.display = 'flex';
-            megaHamburger.style.visibility = 'visible';
-            megaHamburger.style.opacity = '1';
-            megaHamburger.style.zIndex = '9999999';
-            megaHamburger.style.transform = 'none';
-            megaHamburger.style.width = '50px';
-            megaHamburger.style.height = '50px';
-            megaHamburger.style.top = '10px';
-            megaHamburger.style.right = '15px';
-          }
-        }, 1000);
       });
     </script>
   </body>

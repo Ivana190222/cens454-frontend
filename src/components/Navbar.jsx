@@ -30,6 +30,26 @@ const Navbar = () => {
     return `#${linkMap[text]}`;
   };
 
+  // Función para manejar clics en enlaces del menú móvil
+  const handleMobileMenuClick = (targetId) => {
+    // Cerrar el menú
+    setMenuOpen(false);
+    
+    // Comunicar con el botón hamburguesa HTML
+    const event = new CustomEvent('toggleMobileMenu', { detail: { isOpen: false } });
+    window.dispatchEvent(event);
+    document.body.classList.remove('mobile-menu-open');
+    document.body.classList.remove('menu-is-open');
+    
+    // Pequeña pausa para permitir que el menú se cierre antes de desplazarse
+    setTimeout(() => {
+      const targetElement = document.getElementById(targetId);
+      if (targetElement) {
+        targetElement.scrollIntoView({ behavior: 'smooth' });
+      }
+    }, 100);
+  };
+
   return (
     <nav className="main-navbar">
       <div className="navbar-container">
@@ -77,30 +97,27 @@ const Navbar = () => {
       {/* Mobile menu */}
       <div className={`mobile-menu ${menuOpen ? 'show' : ''}`}>
         <div className="mobile-menu-content">
-          {['Home', 'Nosotros', 'Galería', 'Contáctanos'].map((item, index) => (
-            <a
-              key={index}
-              href={getHref(item)}
-              onClick={() => {
-                setMenuOpen(false);
-                // Cerrar el menú en el HTML también
-                const event = new CustomEvent('toggleMobileMenu', { detail: { isOpen: false } });
-                window.dispatchEvent(event);
-                document.body.classList.remove('mobile-menu-open');
-              }}
-              className="mobile-menu-item"
-            >
-              {item}
-            </a>
-          ))}
+          {['Home', 'Nosotros', 'Galería', 'Contáctanos'].map((item, index) => {
+            const targetId = getHref(item).substring(1); // Quitar el # del inicio
+            return (
+              <a
+                key={index}
+                href={getHref(item)}
+                onClick={(e) => {
+                  e.preventDefault(); // Prevenir el comportamiento predeterminado
+                  handleMobileMenuClick(targetId);
+                }}
+                className="mobile-menu-item"
+              >
+                {item}
+              </a>
+            );
+          })}
           <a 
             href="#contacto" 
-            onClick={() => {
-              setMenuOpen(false);
-              // Cerrar el menú en el HTML también
-              const event = new CustomEvent('toggleMobileMenu', { detail: { isOpen: false } });
-              window.dispatchEvent(event);
-              document.body.classList.remove('mobile-menu-open');
+            onClick={(e) => {
+              e.preventDefault();
+              handleMobileMenuClick('contacto');
             }}
             className="mobile-cta-button"
           >

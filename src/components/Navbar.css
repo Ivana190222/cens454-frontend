@@ -63,19 +63,25 @@
 
 /* Botón de hamburguesa para móviles - MEJORADO */
 .hamburger-button {
-  display: block !important;
-  width: 56px !important;
-  height: 56px !important;
-  background-color: #1A1A1A !important;
-  border: 2px solid #D4AF37 !important;
-  border-radius: 8px !important;
-  padding: 16px !important;
-  cursor: pointer !important;
-  outline: none !important;
-  transition: all 0.3s ease !important;
-  position: relative !important;
-  z-index: 1001 !important;
-  margin-left: auto !important;
+  display: none;
+}
+
+@media (max-width: 767px) {
+  .hamburger-button {
+    display: block !important;
+    width: 56px !important;
+    height: 56px !important;
+    background-color: #1A1A1A !important;
+    border: 2px solid #D4AF37 !important;
+    border-radius: 8px !important;
+    padding: 16px !important;
+    cursor: pointer !important;
+    outline: none !important;
+    transition: all 0.3s ease !important;
+    position: relative !important;
+    z-index: 1001 !important;
+    margin-left: auto !important;
+  }
 }
 
 .hamburger-button:hover {
@@ -184,6 +190,7 @@
   position: fixed;
   top: 0;
   left: 0;
+  right: 0; /* Añadir right: 0 para asegurar que cubra todo el ancho */
   width: 100%;
   height: 100vh;
   background-color: rgba(10, 10, 10, 0.98);
@@ -198,6 +205,8 @@
   align-items: center;
   backdrop-filter: blur(5px);
   pointer-events: none;
+  overflow-x: hidden; /* Prevenir scroll horizontal */
+  overflow-y: auto; /* Permitir scroll vertical si es necesario */
 }
 
 .mobile-menu.show {
@@ -207,16 +216,6 @@
   pointer-events: auto;
 }
 
-.mobile-menu::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 70px;
-  height: 70px;
-  pointer-events: none;
-}
-
 .mobile-menu-content {
   display: flex;
   flex-direction: column;
@@ -224,6 +223,7 @@
   gap: 2rem;
   width: 100%;
   max-width: 300px;
+  padding: 0 20px;
 }
 
 .mobile-menu-item {
@@ -234,10 +234,27 @@
   text-align: center;
   position: relative;
   transition: color 0.3s;
+  width: 100%;
 }
 
 .mobile-menu-item:hover {
   color: #D6A520;
+}
+
+.mobile-menu-item::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 2px;
+  background: linear-gradient(to right, #B8860B, #FFD700, #B8860B);
+  transition: width 0.3s ease;
+}
+
+.mobile-menu-item:hover::after {
+  width: 50%;
 }
 
 .mobile-cta-button {
@@ -258,6 +275,7 @@
 
 .mobile-cta-button:hover {
   background: linear-gradient(to left, #B8860B, #FFD700);
+  transform: scale(1.05);
 }
 
 .mobile-cta-icon {
@@ -298,7 +316,8 @@
   
   /* Asegurar que el espacio para el logo es suficiente */
   .navbar-container {
-    padding: 0 75px 0 1rem; /* Espacio a la derecha para el botón hamburguesa */
+    padding: 0 15px; /* Reducir para dispositivos móviles pequeños */
+    justify-content: flex-start; /* Alinear logo a la izquierda */
   }
 }
 
@@ -307,4 +326,46 @@
   .logo-text-main {
     font-size: 1.3rem; /* Ajustar texto para pantallas muy pequeñas */
   }
+  
+  .logo-container {
+    width: 45px; /* Tamaño reducido para pantallas muy pequeñas */
+    height: 45px;
+    margin-right: 0.5rem;
+  }
+  
+  .navbar-container {
+    padding: 0 10px; /* Reducir aún más para pantallas muy pequeñas */
+  }
+}
+
+/* Ajuste para teléfonos pequeños en landscape */
+@media (max-height: 450px) and (orientation: landscape) {
+  .mobile-menu-content {
+    gap: 1rem; /* Reducir espacio entre elementos */
+  }
+  
+  .mobile-menu-item {
+    font-size: 1.2rem; /* Texto más pequeño */
+  }
+  
+  .mobile-cta-button {
+    padding: 0.5rem 1rem; /* Botón más pequeño */
+  }
+}
+
+/* Asegurarse de que el menú se ajuste a pantallas grandes */
+@media (min-width: 1400px) {
+  .navbar-container {
+    max-width: 1400px; /* Más ancho para pantallas grandes */
+  }
+  
+  .desktop-menu {
+    gap: 2rem; /* Más espacio entre elementos en pantallas grandes */
+  }
+}
+
+/* Asegurar transiciones suaves en todos los dispositivos */
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 } 
