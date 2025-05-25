@@ -58,22 +58,22 @@ const Navbar = () => {
           </div>
         </a>
         
-        {/* Mobile menu button */}
+        {/* Mobile menu button - Mejorado para mayor visibilidad */}
         <button 
           onClick={toggleMenu}
-          className="md:hidden focus:outline-none"
+          className="md:hidden focus:outline-none bg-[#1A1A1A] p-3 rounded-md border border-[#D4AF37]/30 btn-hamburger"
           aria-label="Toggle menu"
         >
           <div className="relative w-6 h-5">
-            <span className={`absolute h-0.5 w-6 bg-[#D4AF37] transform transition-all duration-300 ${
+            <span className={`absolute hamburger-line transform transition-all duration-300 ${
               menuOpen ? 'rotate-45 top-2.5' : 'top-0'
             }`}></span>
             
-            <span className={`absolute h-0.5 w-6 top-2 bg-[#D4AF37] transform transition-all duration-300 ${
+            <span className={`absolute hamburger-line top-2 transform transition-all duration-300 ${
               menuOpen ? 'opacity-0' : 'opacity-100'
             }`}></span>
             
-            <span className={`absolute h-0.5 w-6 bg-[#D4AF37] transform transition-all duration-300 ${
+            <span className={`absolute hamburger-line transform transition-all duration-300 ${
               menuOpen ? '-rotate-45 top-2.5' : 'top-5'
             }`}></span>
           </div>
@@ -102,17 +102,17 @@ const Navbar = () => {
         </div>
       </div>
       
-      {/* Mobile menu */}
-      <div className={`md:hidden transition-all duration-300 overflow-hidden ${
+      {/* Mobile menu - Con fondo más oscuro y bordes para mejor visibilidad */}
+      <div className={`md:hidden transition-all duration-300 overflow-hidden shadow-lg ${
         menuOpen ? 'max-h-64 opacity-100' : 'max-h-0 opacity-0'
       }`}>
-        <div className="px-4 py-2 bg-dark-darker flex flex-col space-y-2">
+        <div className="px-4 py-3 bg-[#0A0A0A] border-t border-[#D4AF37]/20 flex flex-col space-y-3">
           {['Home', 'Nosotros', 'Galería', 'Contáctanos'].map((item, index) => (
             <a
               key={index}
               href={getHref(item)}
               onClick={() => setMenuOpen(false)}
-              className="text-light py-2 border-b border-[#D4AF37]/10 text-sm hover:text-[#D4AF37]"
+              className="text-light py-2 border-b border-[#D4AF37]/10 text-sm hover:text-[#D4AF37] font-medium"
             >
               {item}
             </a>
@@ -120,7 +120,7 @@ const Navbar = () => {
           <a 
             href="#contacto" 
             onClick={() => setMenuOpen(false)}
-            className="bg-gradient-to-r from-[#996515] to-[#FFD700] text-dark px-4 py-2 rounded-md text-center text-sm font-medium mt-2 flex items-center justify-center"
+            className="bg-gradient-to-r from-[#996515] to-[#FFD700] text-dark px-4 py-3 rounded-md text-center text-sm font-medium mt-2 flex items-center justify-center"
           >
             <span>Inscríbete Ahora</span>
             <svg className="w-4 h-4 ml-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
