@@ -19,24 +19,6 @@ const Contacto = () => {
     });
   };
   
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    
-    // Mostrar mensaje de éxito
-    setSubmitted(true);
-    
-    // Resetear el formulario después de 3 segundos
-    setTimeout(() => {
-      setSubmitted(false);
-      setFormData({
-        nombre: '',
-        email: '',
-        telefono: '',
-        mensaje: ''
-      });
-    }, 3000);
-  };
-  
   return (
     <section id="contacto">
       <div className="contacto-container">
@@ -76,8 +58,24 @@ const Contacto = () => {
             <div className="social-media">
               <h3>Síguenos</h3>
               <div className="social-icons">
-                <a href="https://www.facebook.com/cens.quequen.5" className="social-icon facebook" target="_blank" rel="noopener noreferrer"></a>
-                <a href="https://www.instagram.com/cens454_quequen?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" className="social-icon instagram" target="_blank" rel="noopener noreferrer"></a>
+                <a 
+                  href="https://www.facebook.com/cens.quequen.5" 
+                  className="social-icon facebook" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  aria-label="Facebook del CENS 454"
+                >
+                  <span className="sr-only">Facebook</span>
+                </a>
+                <a 
+                  href="https://www.instagram.com/cens454_quequen?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" 
+                  className="social-icon instagram" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  aria-label="Instagram del CENS 454"
+                >
+                  <span className="sr-only">Instagram</span>
+                </a>
               </div>
             </div>
           </div>
@@ -90,7 +88,7 @@ const Contacto = () => {
                 <p>Gracias por contactarnos, nos comunicaremos contigo pronto.</p>
               </div>
             ) : (
-              <form action="https://formsubmit.co/cens454necochea@abc.gob.ar" method="POST">
+              <form action="https://formsubmit.co/cens454necochea@abc.gob.ar" method="POST" onSubmit={() => setSubmitted(true)}>
                 <input type="hidden" name="_captcha" value="false" />
                 <input type="hidden" name="_subject" value="Nueva consulta desde la web" />
                 <input type="hidden" name="_next" value={window.location.href} />

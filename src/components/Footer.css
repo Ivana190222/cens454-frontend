@@ -1,13 +1,29 @@
 .footer {
-  background-color: #1E293B;
-  color: #F8FAFC;
+  background-color: #0A0A0A;
+  color: #F8F7F1;
   padding: 3rem 1rem 1.5rem;
   font-family: 'Poppins', sans-serif;
+  position: relative;
+  overflow: hidden;
+}
+
+.footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #0A0A0A;
+  pointer-events: none;
+  z-index: 0;
 }
 
 .footer .container {
   max-width: 1200px;
   margin: 0 auto;
+  position: relative;
+  z-index: 1;
 }
 
 .footer-content {
@@ -26,7 +42,7 @@
 
 .footer-section h3 {
   font-size: 1.2rem;
-  color: #06B6D4;
+  color: #D4AF37; /* Dorado real */
   margin-bottom: 1.2rem;
   font-weight: 600;
   position: relative;
@@ -38,14 +54,14 @@
   position: absolute;
   width: 40px;
   height: 2px;
-  background-color: #4F46E5;
+  background-color: #996515; /* Dorado oscuro */
   bottom: 0;
   left: 0;
 }
 
 .footer-section p {
   margin-bottom: 0.7rem;
-  color: #CBD5E1;
+  color: #B8B8B8;
   font-size: 0.9rem;
 }
 
@@ -55,7 +71,7 @@
 }
 
 .footer-links a {
-  color: #CBD5E1;
+  color: #B8B8B8;
   text-decoration: none;
   margin-bottom: 0.7rem;
   transition: color 0.3s ease;
@@ -63,12 +79,12 @@
 }
 
 .footer-links a:hover {
-  color: #06B6D4;
+  color: #FFD700; /* Gold - Dorado puro */
   text-decoration: none;
 }
 
 .footer-bottom {
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 1px solid rgba(212, 175, 55, 0.1);
   padding-top: 1.5rem;
   text-align: center;
 }

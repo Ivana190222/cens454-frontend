@@ -8,32 +8,70 @@ module.exports = {
     extend: {
       colors: {
         primary: {
-          DEFAULT: '#4F46E5', // Índigo elegante
-          dark: '#3730A3',
-          light: '#818CF8',
+          DEFAULT: '#1A1A1A', // Negro casi puro para fondos
+          dark: '#0F0F0F',
+          light: '#2D2D2D',
         },
         secondary: {
-          DEFAULT: '#06B6D4', // Cian moderno
-          dark: '#0E7490',
-          light: '#67E8F9',
+          DEFAULT: '#333333', // Gris muy oscuro
+          dark: '#252525',
+          light: '#444444',
         },
         accent: {
-          DEFAULT: '#EC4899', // Rosa vibrante
-          dark: '#BE185D',
-          light: '#F9A8D4',
+          DEFAULT: '#D4AF37', // Dorado real
+          dark: '#996515', // Dorado oscuro
+          light: '#FFD700', // Gold - Dorado puro
+        },
+        gold: {
+          DEFAULT: '#D4AF37', // Dorado real
+          dark: '#996515', // Dorado oscuro
+          light: '#FFD700', // Gold - Dorado puro
+          subtle: 'rgba(212, 175, 55, 0.15)', // Para fondos sutiles
+          glow: 'rgba(212, 175, 55, 0.5)', // Para efectos de brillo
+          metallic: 'linear-gradient(to right, #996515, #FFD700, #D4AF37)', // Gradiente metálico
         },
         dark: {
-          DEFAULT: '#334155', // Slate oscuro
-          darker: '#1E293B',
+          DEFAULT: '#121212', // Negro/fondo oscuro principal
+          darker: '#0A0A0A',
+          lighter: '#1E1E1E',
         },
         light: {
-          DEFAULT: '#F8FAFC', // Slate claro
-          darker: '#F1F5F9',
+          DEFAULT: '#F8F7F1', // Casi blanco con tono cálido
+          darker: '#E8E6D9',
+          muted: '#B8B8B8', // Para textos secundarios
         }
       },
       fontFamily: {
         sans: ['Montserrat', 'sans-serif'],
         display: ['Poppins', 'sans-serif'],
+        serif: ['Georgia', 'Times New Roman', 'serif'],
+      },
+      boxShadow: {
+        'gold-sm': '0 1px 2px rgba(212, 175, 55, 0.2)',
+        'gold': '0 4px 6px rgba(212, 175, 55, 0.25)',
+        'gold-lg': '0 10px 15px rgba(212, 175, 55, 0.3)',
+        'gold-inner': 'inset 0 2px 4px 0 rgba(212, 175, 55, 0.2)',
+        'gold-glow': '0 0 15px rgba(255, 215, 0, 0.5)', // Brillo dorado más intenso
+      },
+      backgroundImage: {
+        'gold-gradient': 'linear-gradient(to right, #996515, #FFD700, #D4AF37)',
+        'gold-metallic': 'linear-gradient(135deg, #0A0A0A, #1E1E1E 30%, #1E1E1E 70%, #0A0A0A), linear-gradient(to right, #996515, #FFD700, #D4AF37)',
+        'dark-gradient': 'linear-gradient(to bottom, #1A1A1A, #0F0F0F)',
+      },
+      animation: {
+        'gold-pulse': 'goldPulse 2s infinite',
+        'gold-shimmer': 'goldShimmer 2s infinite',
+      },
+      keyframes: {
+        goldPulse: {
+          '0%, 100%': { boxShadow: '0 0 0 rgba(212, 175, 55, 0)' },
+          '50%': { boxShadow: '0 0 20px rgba(255, 215, 0, 0.6)' },
+        },
+        goldShimmer: {
+          '0%': { backgroundPosition: '0% 50%' },
+          '50%': { backgroundPosition: '100% 50%' },
+          '100%': { backgroundPosition: '0% 50%' },
+        }
       },
     },
   },

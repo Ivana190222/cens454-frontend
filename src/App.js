@@ -19,6 +19,19 @@ function App() {
     }
   }, []);
 
+  // Configurar favicon dinámicamente como respaldo
+  useEffect(() => {
+    // Si por alguna razón el favicon SVG no funciona, esto servirá como respaldo
+    const favicon = document.querySelector('link[rel="icon"]');
+    if (!favicon) {
+      const newFavicon = document.createElement('link');
+      newFavicon.rel = 'icon';
+      newFavicon.href = '/img/favicon.svg';
+      newFavicon.type = 'image/svg+xml';
+      document.head.appendChild(newFavicon);
+    }
+  }, []);
+
   return (
     <div className="App">
       <Navbar />
