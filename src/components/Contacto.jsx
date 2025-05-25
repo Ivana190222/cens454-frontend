@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './Contacto.css';
+import Swal from 'sweetalert2';
 
 const Contacto = () => {
   const [formData, setFormData] = useState({
@@ -17,6 +18,55 @@ const Contacto = () => {
       ...formData,
       [name]: value
     });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    
+    // Mostrar SweetAlert2
+    Swal.fire({
+      title: '¡Mensaje Enviado!',
+      text: 'Gracias por contactarnos, nos comunicaremos contigo pronto.',
+      icon: 'success',
+      confirmButtonText: 'Aceptar',
+      confirmButtonColor: '#D6A520',
+      background: '#1E1E1E',
+      color: '#F8F7F1',
+      iconColor: '#FFD700',
+    });
+    
+    // Enviar el formulario
+    const form = e.target;
+    const formAction = form.action;
+    const formData = new FormData(form);
+    
+    fetch(formAction, {
+      method: 'POST',
+      body: formData,
+      mode: 'no-cors'
+    })
+      .then(() => {
+        setSubmitted(true);
+        // Limpiar el formulario
+        setFormData({
+          nombre: '',
+          email: '',
+          telefono: '',
+          mensaje: ''
+        });
+      })
+      .catch(error => {
+        console.error('Error al enviar el formulario:', error);
+        Swal.fire({
+          title: 'Error',
+          text: 'Hubo un problema al enviar tu mensaje. Por favor, intenta nuevamente.',
+          icon: 'error',
+          confirmButtonText: 'Aceptar',
+          confirmButtonColor: '#D6A520',
+          background: '#1E1E1E',
+          color: '#F8F7F1',
+        });
+      });
   };
   
   return (
@@ -88,7 +138,11 @@ const Contacto = () => {
                 <p>Gracias por contactarnos, nos comunicaremos contigo pronto.</p>
               </div>
             ) : (
-              <form action="https://formsubmit.co/cens454necochea@abc.gob.ar" method="POST" onSubmit={() => setSubmitted(true)}>
+              <form 
+                action="https://formsubmit.co/cens454necochea@abc.gob.ar" 
+                method="POST" 
+                onSubmit={handleSubmit}
+              >
                 <input type="hidden" name="_captcha" value="false" />
                 <input type="hidden" name="_subject" value="Nueva consulta desde la web" />
                 <input type="hidden" name="_next" value={window.location.href} />
